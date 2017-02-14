@@ -1,7 +1,10 @@
 package firecode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -12,7 +15,12 @@ public class Substraction {
 	public static void main(String[] args) {
 		int[]t1 = {1,2,3};
 		int[]t2 = {2,3,4};
-		System.out.println(subtraction(t1, t2));
+		int[] result = subtraction(t1, t2);
+		System.out.print("[");
+		for(int i=0; i<result.length; i++){
+			System.out.print(" "+result[i]);					
+		}
+		System.out.print("]");	
 	}
 	
 	public static int[] subtraction(int[] t1, int[] t2){
@@ -23,12 +31,19 @@ public class Substraction {
 		for(int j=0; j<t2.length; j++){
 			list.add(t2[j]);
 		}
-		System.out.println(list);
+		Map<Integer, Integer> map = new HashMap<Integer,Integer>();
+		for(int i=0; i<list.size(); i++){
+			if(map.get(list.get(i))==null){
+				map.put(list.get(i), 1);
+			}else{
+				map.put(list.get(i), i+1);
+			}
+		}
+		int[] result = new int[map.size()];
 		int index = 0;
-		int[] result = new int[2];
-		for(Integer s : list){
-			if(list.contains(s)){
-				result[index++] = s;
+		for(Map.Entry<Integer, Integer> e: map.entrySet()){
+			if(e.getValue()==1){
+				result[index++]=e.getKey();
 			}
 		}
 		return result;
