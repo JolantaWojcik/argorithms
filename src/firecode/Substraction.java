@@ -3,6 +3,7 @@ package firecode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,27 +25,29 @@ public class Substraction {
 	}
 	
 	public static int[] subtraction(int[] t1, int[] t2){
-		List<Integer> list = new ArrayList<Integer>();
+		//stworzyc setAll ktory zawiera elementy z t1 i t2
+		//stworzyc setWspolnychElementow ktore sa w t1 i t2
+		//z setAll usunac wszystko setWspolnychElementow
+		Set<Integer> setAllItems = new TreeSet<Integer>();
+		Set<Integer> setCommonItems = new HashSet<Integer>();
 		for(int i=0; i<t1.length; i++){
-			list.add(t1[i]);
-		}
-		for(int j=0; j<t2.length; j++){
-			list.add(t2[j]);
-		}
-		Map<Integer, Integer> map = new HashMap<Integer,Integer>();
-		for(int i=0; i<list.size(); i++){
-			if(map.get(list.get(i))==null){
-				map.put(list.get(i), 1);
-			}else{
-				map.put(list.get(i), i+1);
+			for(int j=0; j<t2.length; j++){
+				setAllItems.add(t1[i]);
+				setAllItems.add(t2[j]);
+				if(t1[i]==t2[j]){
+					setCommonItems.add(t1[i]);
+				}
 			}
 		}
-		int[] result = new int[map.size()];
+		for(int i=0; i<=setAllItems.size(); i++){
+			if(setCommonItems.contains(i)){
+				setAllItems.remove(i);
+			}
+		}
+		int[] result = new int[setAllItems.size()];
 		int index = 0;
-		for(Map.Entry<Integer, Integer> e: map.entrySet()){
-			if(e.getValue()==1){
-				result[index++]=e.getKey();
-			}
+		for(Integer s : setAllItems){
+			result[index++] = s;
 		}
 		return result;
 	}
