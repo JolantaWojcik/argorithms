@@ -8,7 +8,7 @@ public class IsAnagram {
 	}
 	public static boolean isAnagram(String s1, String s2) {
 		if(s1==null || s2==null){
-			throw new IllegalArgumentException("Cant be null");
+			throw new IllegalArgumentException("Can't be null");
 		}
 		return sortChars(s1).equals(sortChars(s2));
 	}
