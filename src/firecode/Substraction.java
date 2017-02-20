@@ -14,6 +14,7 @@ public class Substraction {
 //	zwroci roznice elementow dla t1 i t2 np: Jesli t1 = [1,2,3] a t2=[2,3,4] to wynikiem bedzie result = [1,4]
 	
 	public static void main(String[] args) {
+	
 		int[]t1 = {1,2,3};
 		int[]t2 = {2,3,4};
 		int[] result = subtraction(t1, t2);
