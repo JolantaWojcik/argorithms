@@ -5,6 +5,7 @@ public class StringToBinary {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println(binary("kot"));
+		System.out.println(Integer.toBinaryString(100));
 	}
 
 	public static String binary(String s){

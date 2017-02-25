@@ -16,7 +16,7 @@ public class MostCommon {
 			if(map.get(elements[i])==null){
 				map.put(elements[i], 1);
 			}else{
-				map.put(elements[i], i+1);
+				map.put(elements[i], map.get(elements[i])+1);
 			}
 		}
 		System.out.println(map.toString());
